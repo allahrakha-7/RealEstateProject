@@ -7,13 +7,20 @@ function Profile() {
   const [file, setFile] = useState(undefined);
   const [filePerc, setFilePerc] = useState(0);
   const [fileUploadError, setFileUploadError] = useState(false);
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    avatar: currentUser.avatar,
+  });
 
   useEffect(() => {
     if (file) {
+      if (file.size > 2 * 1024 * 1024) {
+
+        setFileUploadError(true);
+        setFilePerc(0);
+        return;
+      }
       handleFileUpload(file);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [file]);
 
   const handleFileUpload = async (file) => {
@@ -38,12 +45,11 @@ function Profile() {
         }
       });
 
-      // Handle success
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
           const res = JSON.parse(xhr.responseText);
           if (xhr.status === 200 && res.secure_url) {
-            setFormData({ ...formData, avatar: res.secure_url });
+            setFormData((prevData) => ({ ...prevData, avatar: res.secure_url }));
           } else {
             setFileUploadError(true);
           }
@@ -72,7 +78,7 @@ function Profile() {
 
           <img
             onClick={() => fileRef.current.click()}
-            src={formData.avatar || currentUser.avatar}
+            src={formData.avatar}
             alt='profile'
             className='rounded-full h-24 w-24 object-cover cursor-pointer self-center mt-2'
           />
