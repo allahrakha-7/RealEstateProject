@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 
 function Header() {
     const { currentUser } = useSelector(state => state.user); 
+    
   return (
     <>
         <header className="bg-slate-200 shadow-md">
@@ -26,7 +27,7 @@ function Header() {
                 <Link to="/about">
                 <li className="hidden sm:inline text-slate-700 hover:underline">About</li>
                 </Link>
-                <Link to='/sign-in'>
+                <Link to='/profile'>
                 {currentUser ? (
                     <img src={currentUser.avatar} alt='profile' className="rounded-full w-7 h-7 object-cover"/>
                 ) : (
