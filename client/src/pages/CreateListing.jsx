@@ -18,7 +18,6 @@ function CreateListing() {
         parking: false,
         furnished: false,
     });
-    console.log(formData);
     const [imageUploadError, setImageUploadError] = useState(false);
     const [uploading, setUploading] = useState(false);
     const [error, setError] = useState(false);
@@ -59,7 +58,7 @@ function CreateListing() {
                 const formData = new FormData();
                 formData.append("file", file);
                 formData.append("upload_preset", import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET);
-                formData.append("folder", "listing_images");
+                formData.append("folder", "images");
 
                 const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
                 const xhr = new XMLHttpRequest();
