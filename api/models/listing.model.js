@@ -38,7 +38,7 @@ const listingSchema = new mongoose.Schema (
             type: Boolean,
             required: true,
         },
-        types: {
+        type: {
             type: String,
             required: true,
         },
@@ -54,7 +54,8 @@ const listingSchema = new mongoose.Schema (
             type: String,
             required: true,
         },
-    }, {timestamps: true}
+    }, 
+    {timestamps: true}
 );
 
 
