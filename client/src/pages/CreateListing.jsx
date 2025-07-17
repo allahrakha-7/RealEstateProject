@@ -138,9 +138,9 @@ function CreateListing() {
 
             <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
                 <div className="flex flex-col gap-4 flex-1">
-                    <input onChange={handleChange} value={formData.name} type="text" placeholder="Name" className="border border-gray-300 p-3 rounded-lg focus:outline-blue-500" id="name" maxLength='62' minLength='10' required />
-                    <textarea onChange={handleChange} value={formData.description} type="text" placeholder="Description" className="border border-gray-300 p-3 rounded-lg  focus:outline-blue-500" id="description" required />
-                    <input onChange={handleChange} value={formData.address} type="text" placeholder="Address" className="border border-gray-300 p-3 rounded-lg  focus:outline-blue-500" id="address" required />
+                    <input onChange={handleChange} value={formData.name} type="text" placeholder="Name" className="border border-gray-300 p-3 rounded-lg focus:outline-slate-700" id="name" maxLength='62' minLength='10' required />
+                    <textarea onChange={handleChange} value={formData.description} type="text" placeholder="Description" className="border border-gray-300 p-3 rounded-lg  focus:outline-slate-700" id="description" required />
+                    <input onChange={handleChange} value={formData.address} type="text" placeholder="Address" className="border border-gray-300 p-3 rounded-lg  focus:outline-slate-700" id="address" required />
 
                     <div className="flex gap-6 flex-wrap">
                         <div className="flex gap-2">
@@ -166,15 +166,15 @@ function CreateListing() {
                     </div>
                     <div className="flex flex-wrap gap-6">
                         <div className="flex items-center gap-2">
-                            <input onChange={handleChange} value={formData.bedrooms} type="number" id="bedrooms" min="1" max="10" required className="p-3 border border-gray-300 rounded-lg"/>
+                            <input onChange={handleChange} value={formData.bedrooms} type="number" id="bedrooms" min="1" max="10" required className="p-3 border border-gray-300 rounded-lg focus:outline-slate-700"/>
                             <p>Beds</p>
                         </div>
                         <div className="flex items-center gap-2">
-                            <input onChange={handleChange} value={formData.bathrooms} type="number" id="bathrooms" min="1" max="10" required className="p-3 border border-gray-300 rounded-lg"/>
+                            <input onChange={handleChange} value={formData.bathrooms} type="number" id="bathrooms" min="1" max="10" required className="p-3 border border-gray-300 rounded-lg focus:outline-slate-700"/>
                             <p>Baths</p>
                         </div>
                         <div className="flex items-center gap-2">
-                            <input onChange={handleChange} value={formData.regularPrice} type="number" id="regularPrice" min="50" max="1000000" required className="p-3 border border-gray-300 rounded-lg"/>
+                            <input onChange={handleChange} value={formData.regularPrice} type="number" id="regularPrice" min="50" max="1000000" required className="p-3 border border-gray-300 rounded-lg focus:outline-slate-700"/>
                             <div className="flex flex-col items-center">
                                 <p>Regular Price</p>
                                 <span className="text-xs">($ / month)</span>

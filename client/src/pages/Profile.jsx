@@ -210,7 +210,7 @@ function Profile() {
             placeholder='username'
             defaultValue={currentUser.username}
             id='username'
-            className='border p-3 rounded-lg'
+            className='border p-3 rounded-lg border-gray-400 focus:outline-gray-500'
             onChange={handleChange}
           />
           <input
@@ -218,14 +218,14 @@ function Profile() {
             placeholder='email'
             defaultValue={currentUser.email}
             id='email'
-            className='border p-3 rounded-lg'
+            className='border p-3 rounded-lg border-gray-400 focus:outline-gray-500'
             onChange={handleChange}
           />
           <input
             type='password'
             placeholder='password'
             id='password'
-            className='border p-3 rounded-lg'
+            className='border p-3 rounded-lg border-gray-400 focus:outline-gray-500'
             onChange={handleChange}
           />
 
