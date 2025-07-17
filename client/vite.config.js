@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: "https://your-backend.up.railway.app",
+        target: "https://realestateproject-production.up.railway.app/",
         secure: false,
       },
     },
