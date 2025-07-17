@@ -7,6 +7,9 @@ import { useNavigate } from "react-router-dom";
 function OAuth() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    const API_BASE_URL = import.meta.env.VITE_API_URL;
+
     const handleGoogleClick = async () => {
         try {
             const provider = new GoogleAuthProvider();
@@ -14,7 +17,7 @@ function OAuth() {
 
             const result = await signInWithPopup(auth, provider);
 
-            const res = await fetch('/api/auth/google', {
+            const res = await fetch(`${API_BASE_URL}/api/auth/google`, {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json"

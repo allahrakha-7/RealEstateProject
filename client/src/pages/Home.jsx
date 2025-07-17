@@ -12,10 +12,13 @@ function Home() {
   const [rentListings, setRentListings] = useState([]);
   SwiperCore.use([Navigation]);
   console.log(offerListings);
+
+  const API_BASE_URL = import.meta.env.VITE_API_URL;
+  
   useEffect(() => {
     const fetchOfferListings = async () => {
       try {
-        const res = await fetch('/api/listing/get?offer=true&limit=4');
+        const res = await fetch(`${API_BASE_URL}/api/listing/get?offer=true&limit=4`);
         const data = await res.json();
         setOfferListings(data);
         fetchRentListings();
@@ -25,7 +28,7 @@ function Home() {
     };
     const fetchRentListings = async () => {
       try {
-        const res = await fetch('/api/listing/get?type=rent&limit=4');
+        const res = await fetch(`${API_BASE_URL}/api/listing/get?offer=true&limit=4`);
         const data = await res.json();
         setRentListings(data);
         fetchSaleListings();
@@ -36,7 +39,7 @@ function Home() {
 
     const fetchSaleListings = async () => {
       try {
-        const res = await fetch('/api/listing/get?type=sale&limit=4');
+        const res = await fetch(`${API_BASE_URL}/api/listing/get?offer=true&limit=4`);
         const data = await res.json();
         setSaleListings(data);
       } catch (error) {
@@ -44,6 +47,7 @@ function Home() {
       }
     };
     fetchOfferListings();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div>
