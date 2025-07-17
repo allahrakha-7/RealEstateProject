@@ -36,12 +36,12 @@ function Contact({ listing }) {
             value={message}
             onChange={onChange}
             placeholder='Enter your message here...'
-            className='w-full border p-3 rounded-lg'
+            className='w-full border p-3 rounded-lg focus:outline-slate-600'
           ></textarea>
 
           <Link
           to={`mailto:${landlord.email}?subject=Regarding ${listing.name}&body=${message}`}
-          className='bg-slate-700 text-white text-center p-3 uppercase rounded-lg hover:opacity-95'
+          className='bg-slate-700 text-white text-center p-3 uppercase rounded-lg hover:opacity-95 '
           >
             Send Message          
           </Link>
