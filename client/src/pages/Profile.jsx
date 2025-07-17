@@ -31,8 +31,6 @@ function Profile() {
   const [userListings, setUserListings] = useState([]);
   const dispatch = useDispatch();
 
-  const API_BASE_URL = import.meta.env.VITE_API_URL;
-  
   useEffect(() => {
     if (file) {
       if (file.size > 2 * 1024 * 1024) {
@@ -94,7 +92,7 @@ function Profile() {
 
     try {
       dispatch(updateUserStart());
-      const res = await fetch(`${API_BASE_URL}/api/user/update/${currentUser._id}`, {
+      const res = await fetch(`/api/user/update/${currentUser._id}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -116,7 +114,7 @@ function Profile() {
   const handleDeleteUser = async () => {
     try {
       dispatch(deleteUserStart());
-      const res = await fetch(`${API_BASE_URL}/api/user/delete/${currentUser._id}`, { method: 'DELETE' });
+      const res = await fetch(`/api/user/delete/${currentUser._id}`, { method: 'DELETE' });
       const data = await res.json();
       if (data.success === false) {
         dispatch(deleteUserFailure(data.message));
@@ -131,7 +129,7 @@ function Profile() {
   const handleSignOut = async () => {
     try {
       dispatch(signOutUserStart());
-      const res = await fetch(`${API_BASE_URL}/api/auth/signout`);
+      const res = await fetch('/api/auth/signout');
       const data = await res.json();
       if (data.success === false) {
         dispatch(signOutUserFailure(data.message));
@@ -145,7 +143,7 @@ function Profile() {
 
   const handleShowListings = async () => {
     try {
-      const res = await fetch(`${API_BASE_URL}/api/user/listings/${currentUser._id}`);
+      const res = await fetch(`/api/user/listings/${currentUser._id}`);
       const data = await res.json();
       if (data.success === false) {
         setShowListingsError(true);
@@ -160,7 +158,7 @@ function Profile() {
 
   const handleListingDelete = async (listingId) => {
     try {
-      const res = await fetch(`${API_BASE_URL}/api/listing/delete/${listingId}`, {
+      const res = await fetch(`/api/listing/delete/${listingId}`, {
         method: 'DELETE',
       });
       const data = await res.json();

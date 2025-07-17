@@ -25,8 +25,6 @@ function CreateListing() {
     const { currentUser } = useSelector((state) => state.user);
     const navigate = useNavigate();
 
-    const API_BASE_URL = import.meta.env.VITE_API_URL;
-
     // eslint-disable-next-line no-unused-vars
     const handleImageSubmit = (e) => {
         if(files.length > 0 && files.length + formData.imageUrls.length < 7) {
@@ -115,7 +113,7 @@ function CreateListing() {
             if (+formData.regularPrice < +formData.discountPrice) return setError('Discount price must be lower than regular price!');
             setLoading(true);
             setError(false);
-            const res = await fetch(`${API_BASE_URL}/api/listing/create`, {
+            const res = await fetch('/api/listing/create', {
                 method: 'POST',
                 headers: {
                     'Content-Type' : 'application/json',

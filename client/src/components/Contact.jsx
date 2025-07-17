@@ -8,12 +8,10 @@ function Contact({ listing }) {
     setMessage(e.target.value);
   };
 
-  const API_BASE_URL = import.meta.env.VITE_API_URL;
-
   useEffect(() => {
     const fetchLandlord = async () => {
       try {
-        const res = await fetch(`${API_BASE_URL}/api/user/${listing.userRef}`);
+        const res = await fetch(`/api/user/${listing.userRef}`);
         const data = await res.json();
         setLandlord(data);
       } catch (error) {
@@ -21,7 +19,6 @@ function Contact({ listing }) {
       }
     };
     fetchLandlord();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [listing.userRef]);
   return (
     <>

@@ -8,8 +8,6 @@ function SignUp() {
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
-    const API_BASE_URL = import.meta.env.VITE_API_URL;
-
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -20,7 +18,7 @@ function SignUp() {
         e.preventDefault();
         try {
             setLoading(true);
-            const res = await fetch(`${API_BASE_URL}/api/auth/signup`,
+            const res = await fetch("/api/auth/signup",
                 {
                     method: "POST",
                     headers: {
