@@ -136,6 +136,7 @@ function UpdateListing() {
                     'Content-Type' : 'application/json',
                 },
                 body: JSON.stringify({...formData, userRef: currentUser._id,}),
+                credentials: 'include'
             });
             const data = await res.json();
             setLoading(false);
