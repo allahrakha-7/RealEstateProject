@@ -30,6 +30,19 @@ mongoose
   console.log(err);
 });
 
+app.use(cors({
+  origin: [
+    'https://real-estate-web-16sb7p5ir-tech-captains-projects.vercel.app',
+    'https://real-estate-web-app-puce.vercel.app',
+    'http://localhost:3000',
+    'http://localhost:5173' 
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], 
+  allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token'],
+  optionsSuccessStatus: 200 
+}));
+
 app.use(express.json());
 
 app.use(cookieParser());
@@ -40,11 +53,6 @@ app.get('/', (req, res) => {
     status: 'success'
   });
 });
-
-
-app.use('/api/user', userRouter);
-app.use('/api/auth', authRouter);
-app.use('/api/listing', listingRouter);
 
 
 app.use((err, req, res, next) => {
