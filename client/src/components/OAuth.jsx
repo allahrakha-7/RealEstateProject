@@ -19,12 +19,12 @@ function OAuth() {
                 headers: {
                     "Content-Type": "application/json"
                 },
+                credentials: 'include',
                 body: JSON.stringify({ 
                     name: result.user.displayName,
                     email: result.user.email, 
                     photo: result.user.photoURL,
-                }),
-                credentials: 'include'
+                })
             });
             
             const data = await res.json();

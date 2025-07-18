@@ -118,8 +118,8 @@ function CreateListing() {
                 headers: {
                     'Content-Type' : 'application/json',
                 },
-                body: JSON.stringify({...formData, userRef: currentUser._id,}),
                 credentials: 'include',
+                body: JSON.stringify({...formData, userRef: currentUser._id,})
             });
             const data = await res.json();
             setLoading(false);
