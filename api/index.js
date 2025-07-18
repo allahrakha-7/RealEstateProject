@@ -5,25 +5,24 @@ import userRouter from './routes/user.route.js';
 import authRouter from './routes/auth.route.js';
 import listingRouter from './routes/listing.route.js';
 import cookieParser from 'cookie-parser';
-import path from 'path';
 import cors from 'cors';
 dotenv.config();
 
-mongoose
-  .connect(process.env.MONGO)
-  .then(() => {
-    console.log('Connected to MongoDB!');
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-  
 const app = express();
 
 app.use(cors({
   origin: ['https://real-estate-web-app-zeta.vercel.app'],
   credentials: true
 }));
+
+mongoose
+.connect(process.env.MONGO)
+.then(() => {
+  console.log('Connected to MongoDB!');
+})
+.catch((err) => {
+  console.log(err);
+});
 
 app.use(express.json());
 
@@ -46,8 +45,6 @@ app.use((err, req, res, next) => {
 });
 
 
-if (process.env.NODE_ENV !== 'production') {
-  app.listen(3000, () => {
-    console.log('Server running on port 3000');
-  });
-}
+app.listen(3000, () => {
+  console.log('Server running on port 3000');
+});
