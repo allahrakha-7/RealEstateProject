@@ -10,7 +10,7 @@ dotenv.config();
 
 const app = express();
 
-app.use('/.*/', cors({
+app.use(cors({
   origin: [
     'https://real-estate-web-f02tvm580-tech-captains-projects.vercel.app',
     'https://real-estate-web-app-puce.vercel.app',
