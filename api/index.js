@@ -24,9 +24,6 @@ app.use(cors({
   credentials: true, // ✅ needed for cookies
 }));
 
-// ✅ Important to handle preflight requests for cookies
-app.options('*', cors());
-
 mongoose
   .connect(process.env.MONGO)
   .then(() => console.log('Connected to MongoDB!'))
