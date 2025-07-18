@@ -5,10 +5,16 @@ import userRouter from './routes/user.route.js';
 import authRouter from './routes/auth.route.js';
 import listingRouter from './routes/listing.route.js';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 
 dotenv.config();
 
 const app = express();
+
+app.use(cors({
+  origin: ['https://<your-vercel-domain>.vercel.app'],
+  credentials: true,
+}));
 
 mongoose
   .connect(process.env.MONGO)
@@ -35,5 +41,7 @@ app.use((err, req, res, next) => {
 });
 
 
-app.listen(3000, () => {
-  console.log('Server running on port')});
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
