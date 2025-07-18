@@ -6,6 +6,7 @@ import authRouter from './routes/auth.route.js';
 import listingRouter from './routes/listing.route.js';
 import cookieParser from 'cookie-parser';
 import path from 'path';
+import cors from 'cors';
 dotenv.config();
 
 mongoose
@@ -39,6 +40,11 @@ app.use(express.static(path.join(__dirname, '/client/dist')));
 app.get(/.*/, (req, res) => {
   res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
 });
+
+app.use(cors({
+  origin: ['https://real-estate-project-chi-five.vercel.app'],
+  credentials: true
+}));
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
