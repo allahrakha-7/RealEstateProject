@@ -11,8 +11,14 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-  origin: ['https://real-estate-web-app-zeta.vercel.app'],
-  credentials: true
+  origin: [
+    'https://your-actual-vercel-app-name.vercel.app',
+    'http://localhost:3000',
+    'http://localhost:5173'
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token']
 }));
 
 mongoose
@@ -27,6 +33,13 @@ mongoose
 app.use(express.json());
 
 app.use(cookieParser());
+
+app.get('/', (req, res) => {
+  res.json({ 
+    message: 'Real Estate API is running!',
+    status: 'success'
+  });
+});
 
 
 app.use('/api/user', userRouter);
