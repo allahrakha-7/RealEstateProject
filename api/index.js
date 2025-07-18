@@ -10,9 +10,9 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors({
+app.use('*', cors({
   origin: [
-    'https://real-estate-web-16sb7p5ir-tech-captains-projects.vercel.app',
+    'https://real-estate-web-f02tvm580-tech-captains-projects.vercel.app',
     'https://real-estate-web-app-puce.vercel.app',
     'http://localhost:3000',
     'http://localhost:5173'
