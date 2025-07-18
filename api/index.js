@@ -12,7 +12,7 @@ const app = express();
 
 app.use(cors({
   origin: [
-    'https://your-actual-vercel-app-name.vercel.app',
+    'https://real-estate-web-app-puce.vercel.app/',
     'http://localhost:3000',
     'http://localhost:5173'
   ],
