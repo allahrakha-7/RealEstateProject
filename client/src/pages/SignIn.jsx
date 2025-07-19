@@ -6,6 +6,7 @@ import { signInStart } from "../redux/user/userSlice";
 import { signInSuccess } from "../redux/user/userSlice";
 import { signInFailure } from "../redux/user/userSlice";
 import OAuth from "../components/OAuth";
+import { fetchAPI } from "../api";
 
 
 function SignIn() {
@@ -24,13 +25,12 @@ function SignIn() {
             e.preventDefault();
             try {
                 dispatch(signInStart());
-                const res = await fetch("/api/auth/signin",
+                const res = await fetchAPI(`/api/auth/signin`,
                     {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
                         },
-                        credentials: 'include',
                         body: JSON.stringify(formData)
                     });
                     const data = await res.json();

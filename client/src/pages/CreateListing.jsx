@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { fetchAPI } from "../api";
 
 function CreateListing() {
     const [files, setFiles] = useState([]);
@@ -113,7 +114,7 @@ function CreateListing() {
             if (+formData.regularPrice < +formData.discountPrice) return setError('Discount price must be lower than regular price!');
             setLoading(true);
             setError(false);
-            const res = await fetch('/api/listing/create', {
+            const res = await fetchAPI('/api/listing/create', {
                 method: 'POST',
                 headers: {
                     'Content-Type' : 'application/json',

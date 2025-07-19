@@ -12,7 +12,7 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-  origin: ['https://<your-vercel-domain>.vercel.app'],
+  origin: ['https://real-estate-project-nine-theta.vercel.app'],
   credentials: true,
 }));
 
