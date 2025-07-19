@@ -12,8 +12,7 @@ function Contact({ listing }) {
   useEffect(() => {
     const fetchLandlord = async () => {
       try {
-        const res = await fetchAPI(`/api/user/${listing.userRef}`);
-        const data = await res.json();
+        const data = await fetchAPI(`/api/user/${listing.userRef}`);
         setLandlord(data);
       } catch (error) {
         console.log(error);

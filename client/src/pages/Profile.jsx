@@ -93,12 +93,11 @@ function Profile() {
 
     try {
       dispatch(updateUserStart());
-      const res = await fetchAPI(`/api/user/update/${currentUser._id}`, {
+      const data = await fetchAPI(`/api/user/update/${currentUser._id}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       });
-      const data = await res.json();
 
       if (data.success === false) {
         dispatch(updateUserFailure(data.message));
@@ -115,8 +114,7 @@ function Profile() {
   const handleDeleteUser = async () => {
     try {
       dispatch(deleteUserStart());
-      const res = await fetchAPI(`/api/user/delete/${currentUser._id}`, { method: 'DELETE' });
-      const data = await res.json();
+      const data = await fetchAPI(`/api/user/delete/${currentUser._id}`, { method: 'DELETE' });
       if (data.success === false) {
         dispatch(deleteUserFailure(data.message));
         return;
@@ -130,8 +128,7 @@ function Profile() {
   const handleSignOut = async () => {
     try {
       dispatch(signOutUserStart());
-      const res = await fetchAPI(`/api/auth/signout`);
-      const data = await res.json();
+      const data = await fetchAPI(`/api/auth/signout`);
       if (data.success === false) {
         dispatch(signOutUserFailure(data.message));
         return;
@@ -144,8 +141,7 @@ function Profile() {
 
   const handleShowListings = async () => {
     try {
-      const res = await fetchAPI(`/api/user/listings/${currentUser._id}`);
-      const data = await res.json();
+      const data = await fetchAPI(`/api/user/listings/${currentUser._id}`);
       if (data.success === false) {
         setShowListingsError(true);
         return;
@@ -159,10 +155,9 @@ function Profile() {
 
   const handleListingDelete = async (listingId) => {
     try {
-      const res = await fetchAPI(`/api/listing/delete/${listingId}`, {
+      const data = await fetchAPI(`/api/listing/delete/${listingId}`, {
         method: 'DELETE',
       });
-      const data = await res.json();
       if (data.success === false) {
         console.log(data.message);
         return;

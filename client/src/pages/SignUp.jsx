@@ -19,7 +19,7 @@ function SignUp() {
         e.preventDefault();
         try {
             setLoading(true);
-            const res = await fetchAPI(`/api/auth/signup`,
+            const data = await fetchAPI(`/api/auth/signup`,
                 {
                     method: "POST",
                     headers: {
@@ -27,7 +27,6 @@ function SignUp() {
                     },
                     body: JSON.stringify(formData)
                 });
-                const data = await res.json();
                 console.log(data);
                 if (data.success === false) {
                     setLoading(false);

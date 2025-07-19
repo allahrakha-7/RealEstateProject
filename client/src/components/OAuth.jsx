@@ -15,7 +15,7 @@ function OAuth() {
 
             const result = await signInWithPopup(auth, provider);
 
-            const res = await fetchAPI('/api/auth/google', {
+            const data = await fetchAPI('/api/auth/google', {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json"
@@ -28,7 +28,6 @@ function OAuth() {
                 })
             });
             
-            const data = await res.json();
             dispatch(signInSuccess(data));
             
             navigate("/");

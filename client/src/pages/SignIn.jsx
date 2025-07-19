@@ -25,7 +25,7 @@ function SignIn() {
             e.preventDefault();
             try {
                 dispatch(signInStart());
-                const res = await fetchAPI(`/api/auth/signin`,
+                const data = await fetchAPI(`/api/auth/signin`,
                     {
                         method: "POST",
                         headers: {
@@ -33,8 +33,7 @@ function SignIn() {
                         },
                         body: JSON.stringify(formData)
                     });
-                    const data = await res.json();
-                    console.log(data);
+                    
                     if (data.success === false) {
                         dispatch(signInFailure(data.message));
                         return;

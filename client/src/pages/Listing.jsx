@@ -23,8 +23,7 @@ function Listing() {
     const fetchListing = async () => {
       try {
         setLoading(true);
-        const res = await fetchAPI(`/api/listing/get/${params.listingId}`);
-        const data = await res.json();
+        const data = await fetchAPI(`/api/listing/get/${params.listingId}`);
         if (data.success === false) {
           setError(true);
           setLoading(false);

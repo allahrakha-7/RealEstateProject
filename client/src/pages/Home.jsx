@@ -16,8 +16,7 @@ function Home() {
   useEffect(() => {
     const fetchOfferListings = async () => {
       try {
-        const res = await fetchAPI('/api/listing/get?offer=true&limit=4');
-        const data = await res.json();
+        const data = await fetchAPI('/api/listing/get?offer=true&limit=4');
         setOfferListings(data);
         fetchRentListings();
       } catch (error) {
@@ -26,8 +25,7 @@ function Home() {
     };
     const fetchRentListings = async () => {
       try {
-        const res = await fetchAPI('/api/listing/get?type=rent&limit=4');
-        const data = await res.json();
+        const data = await fetchAPI('/api/listing/get?type=rent&limit=4');
         setRentListings(data);
         fetchSaleListings();
       } catch (error) {
@@ -37,8 +35,7 @@ function Home() {
 
     const fetchSaleListings = async () => {
       try {
-        const res = await fetchAPI('/api/listing/get?type=sale&limit=4');
-        const data = await res.json();
+        const data = await fetchAPI('/api/listing/get?type=sale&limit=4');
         setSaleListings(data);
       } catch (error) {
         console.log(error);
@@ -48,7 +45,6 @@ function Home() {
   }, []);
   return (
     <div>
-      {/* top */}
       <div className='flex flex-col gap-6 p-28 px-3 max-w-6xl mx-auto'>
         <h1 className='text-slate-700 font-bold text-3xl lg:text-6xl'>
           Find your next <span className='text-slate-500'>perfect</span>
@@ -69,7 +65,6 @@ function Home() {
         </Link>
       </div>
 
-      {/* swiper */}
       <Swiper navigation>
         {offerListings &&
           offerListings.length > 0 &&
@@ -87,7 +82,6 @@ function Home() {
           ))}
       </Swiper>
 
-      {/* listing results for offer, sale and rent */}
 
       <div className='max-w-6xl mx-auto p-3 flex flex-col gap-8 my-10'>
         {offerListings && offerListings.length > 0 && (
