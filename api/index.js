@@ -40,6 +40,9 @@ app.use((err, req, res, next) => {
   });
 });
 
+app.get('/', (req, res) => {
+  res.send('API is running...');
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
